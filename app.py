@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -9,6 +8,18 @@ from datetime import datetime
 from sklearn.preprocessing import MinMaxScaler
 
 st.title("Stock Price Predictor App")
+
+st.subheader("Testing Graph")
+
+fig, ax = plt.subplots()
+
+ax.plot([1, 2, 3, 4, 5], [10, 20, 15, 30, 25])
+
+ax.set_title("Test Graph")
+
+st.pyplot(fig)
+
+plt.close(fig)
 
 # Enter Stock ID
 stock = st.text_input("Enter the Stock ID", "GOOG")
