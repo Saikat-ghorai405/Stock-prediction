@@ -18,7 +18,7 @@ google_data = yf.download(stock, start, end)
 if isinstance(google_data.columns, pd.MultiIndex):
   google_data.columns = google_data.columns.get_level_values(0)
 
-model = load_model("Latest_stock_price_model.keras", compile=False)
+model = load_model("Latest_stock_price_model.h5", compile=False)
 st.subheader("Stock Data")
 st.write(google_data)
 
