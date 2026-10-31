@@ -109,9 +109,8 @@ plt.legend(["Data- not used", "Original Test data", "Predicted Test data"])
 st.pyplot(fig)
 
 
-# ---------------------------------------------------------------
 # FUTURE FORECAST: predict the next N days
-# ---------------------------------------------------------------
+
 st.subheader("Future Price Forecast")
 forecast_days = st.slider("How many days to predict?", 1, 100, 7)
 
