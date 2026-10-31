@@ -7,7 +7,32 @@ import yfinance as yf
 
 st.title("Stock Price Predictor App")
 
-stock = st.text_input("Enter the Stock ID", "GOOG")
+# Search and select company
+
+company_search = st.text_input("Enter Company Name or Symbol", "Google")
+
+url = "https://query1.finance.yahoo.com/v1/finance/search"
+
+response = requests.get(
+    url,
+    params={"q": company_search},
+    headers={"User-Agent": "Mozilla/5.0"}
+)
+
+quotes = response.json()["quotes"]
+
+companies = {
+    q["shortname"] + " (" + q["symbol"] + ")": q["symbol"]
+    for q in quotes
+    if q.get("quoteType") == "EQUITY"
+}
+
+selected_company = st.selectbox(
+    "Select Company",
+    list(companies.keys())
+)
+
+stock = companies[selected_company]
 
 from datetime import datetime
 end = datetime.now()
